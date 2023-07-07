@@ -2,7 +2,7 @@
 const routeService = require("../services/routeService");
 
 const getData = async (req, res) => {
-    res.json(routeService.getData(req))
+    res.json(await routeService.getData(req))
 }
 
 module.exports = {
