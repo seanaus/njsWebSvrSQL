@@ -1,25 +1,16 @@
 "use strict";
-const sql = require('mssql');
 const configService = require('./configService');
 const errLogService = require('./errorLogService');
-
-// const connect = ()=> {
-
-//     try{
-//         const pool = connectionPool()
-//         if(pool !== null) {
-
-//         } else {
-//             return null
-//         }
-//     } catch(err) {
-//         errLogService.logError(err);
-//         return null
-//     }
-
-// };
-
-const connect = ()=> {
+switch(configService.mssqlVersion) {
+    case mssqlEnum.VERSION.v2000,
+        mssqlEnum.VERSION.v2005,
+        mssqlEnum.VERSION.v2008,
+        mssqlEnum.VERSION.v2008R2:
+        const sql = require('mssql/msnodesqlv8');
+    default:
+        const sql = require('mssql');
+}
+const connect = (option)=> {
     try{
         return new sql.ConnectionPool(configService.sqlServerConfig);
     } catch(err) {

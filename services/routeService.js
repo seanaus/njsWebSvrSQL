@@ -2,8 +2,11 @@
 const sqlService = require('./msqlService');
 const errLogService = require('./errorLogService');
 const configService = require('./configService');
+const mssqlEnum = require('../enums/mssqlEnum');
+
 // const sql = require('mssql');
 const getData = async(req)=> {
+
 
   const qryParamDb = req.query.database
   const qryParamQuery = req.query.query
@@ -31,17 +34,6 @@ const getData = async(req)=> {
   }
 
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
